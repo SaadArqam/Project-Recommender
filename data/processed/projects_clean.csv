@@ -1,0 +1,31 @@
+project_id,title,description,required_skills,difficulty,tags
+1,ai chatbot,nlp-based chatbot for customer support automation,"python,nlp,ml",Medium,"ai,nlp"
+2,project recommendation system,ml system to recommend projects based on skills,"python,ml,data_mining",Hard,"ai,ml"
+3,expense tracker web app,web application to track daily expenses,"react,node,sql",Easy,web
+4,sentiment analysis tool,analyze customer reviews using nlp,"python,nlp,ml",Medium,"ai,nlp"
+5,resume skill matcher,match resumes with job descriptions using ml,"python,ml,nlp",Hard,"ai,ml"
+6,weather forecast app,weather prediction app using public apis,"javascript,api,react",Easy,web
+7,fake news detection system,detect fake news articles using ml,"python,ml,nlp",Hard,"ai,ml"
+8,task management system,crud-based task management platform,"react,node,mongodb",Easy,web
+9,movie recommendation engine,content-based movie recommender system,"python,ml,data_mining",Medium,"ai,ml"
+10,spam email classifier,classify emails as spam or not spam,"python,ml,nlp",Medium,ai
+11,stock price prediction,predict stock prices using historical data,"python,ml,nlp",Hard,"finance,ai"
+12,online quiz platform,web-based quiz application with scoring,"html,css,javascript",Easy,web
+13,chat application,real-time chat app using sockets,"node,socketio,react",Medium,web
+14,customer churn prediction,predict customer churn using ml models,"python,ml,data_mining",Hard,"ai,business"
+15,handwritten digit recognition,digit recognition using ml models,"python,ml,computer_vision",Medium,ai
+16,e-commerce product recommender,recommend products based on user behavior,"python,ml,data_mining",Hard,"ai,ml"
+17,portfolio website,personal portfolio website,"html,css,javascript",Easy,web
+18,face mask detection system,detect face mask using image classification,"python,ml,computer_vision",Hard,ai
+19,library management system,manage books and users digitally,"java,sql,oop,",Medium,software
+20,traffic prediction system,predict traffic patterns using ml,"python,ml,data_mining",Hard,ai
+21,music recommendation system,recommend music based on user preferences,"python,ml,data_mining",Medium,ai
+22,blog management platform,create and manage blog posts,"react,node,express",Easy,web
+23,loan eligibility predictor,predict loan eligibility using ml,"python,ml,data_analysis",Medium,"finance,ai"
+24,code plagiarism detector,detect similarity between code files,"python,ml,algorithms",Hard,ai
+25,online voting system,secure online voting application,"react,node,security",Medium,web
+26,sales forecasting system,forecast sales using historical data,"python,ml,time_series",Hard,"business,ai"
+27,job recommendation portal,recommend jobs based on skills and interests,"python,ml,nlp",Hard,ai
+28,image classification app,classify images using ml models,"python,ml,computer_vision",Medium,ai
+29,healthcare diagnosis assistant,assist diagnosis using symptom data,"python,ml,data_mining",Hard,ai
+30,smart attendance system,automated attendance using face recognition,"python,ml,computer_vision",Hard,ai
