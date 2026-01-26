@@ -5,15 +5,16 @@ from sklearn.metrics.pairwise import cosine_similarity
 from pathlib import Path
 
 
+
 MODEL_DIR = Path("data/processed/models")
+
+projects = pd.read_csv("data/processed/projects_clean.csv")
+users = pd.read_csv("data/processed/users_clean.csv")
+
 
 
 vectorizer = joblib.load(MODEL_DIR / "tfidf_vectorizer.pkl")
 project_vectors = joblib.load(MODEL_DIR / "project_vectors.pkl")
-
-
-projects = pd.read_csv("data/processed/projects_clean.csv")
-users = pd.read_csv("data/processed/users_clean.csv")
 
 
 def extract_unique_values(column):
