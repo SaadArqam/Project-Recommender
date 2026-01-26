@@ -1,0 +1,2 @@
+User ID,Top N Projects,output,timestamp
+5,5,"{""headers"": [""title"", ""difficulty"", ""tags"", ""score""], ""data"": [[""project recommendation system"", ""Hard"", ""ai,ml"", 0.5521827043135819], [""traffic prediction system"", ""Hard"", ""ai"", 0.5193312799229016], [""movie recommendation engine"", ""Medium"", ""ai,ml"", 0.4842979485589474], [""e-commerce product recommender"", ""Hard"", ""ai,ml"", 0.4658765233883451], [""customer churn prediction"", ""Hard"", ""ai,business"", 0.45811249275151755]], ""metadata"": null}",2026-01-26 23:57:08.662332
