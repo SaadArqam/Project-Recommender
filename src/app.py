@@ -4,32 +4,53 @@ import pandas as pd
 from sklearn.metrics.pairwise import cosine_similarity
 from pathlib import Path
 
+
 MODEL_DIR = Path("data/processed/models")
+
 
 vectorizer = joblib.load(MODEL_DIR / "tfidf_vectorizer.pkl")
 project_vectors = joblib.load(MODEL_DIR / "project_vectors.pkl")
-user_vectors = joblib.load(MODEL_DIR / "user_vectors.pkl")
+
 
 projects = pd.read_csv("data/processed/projects_clean.csv")
 users = pd.read_csv("data/processed/users_clean.csv")
 
 
-def recommend(user_id, top_n):
-    user_id = int(user_id)
+def extract_unique_values(column):
+    values = set()
+    for row in users[column].dropna():
+        for item in row.split(","):
+            values.add(item.strip())
+    return sorted(values)
 
-    if user_id not in users["user_id"].values:
-        return "User not found"
+ALL_SKILLS = extract_unique_values("skills")
+ALL_INTERESTS = extract_unique_values("interests")
+ALL_DIFFICULTIES = sorted(projects["difficulty"].unique())
 
-    user_idx = users.index[users["user_id"] == user_id][0]
 
-    scores = cosine_similarity(
-        user_vectors[user_idx], project_vectors
-    )[0]
+def recommend(skills, interests, difficulty, top_n):
+    if not skills and not interests:
+        return "Please select at least one skill or interest."
 
-    projects_copy = projects.copy()
-    projects_copy["score"] = scores
 
-    top_projects = projects_copy.sort_values(
+    query_text = " ".join(skills + interests)
+
+
+    query_vector = vectorizer.transform([query_text])
+
+
+    scores = cosine_similarity(query_vector, project_vectors)[0]
+
+
+    results = projects.copy()
+    results["score"] = scores
+
+
+    if difficulty != "Any":
+        results = results[results["difficulty"] == difficulty]
+
+
+    top_projects = results.sort_values(
         by="score", ascending=False
     ).head(top_n)
 
@@ -37,17 +58,24 @@ def recommend(user_id, top_n):
         ["title", "difficulty", "tags", "score"]
     ]
 
+
 demo = gr.Interface(
     fn=recommend,
     inputs=[
-        gr.Number(label="User ID", precision=0),
+        gr.CheckboxGroup(ALL_SKILLS, label="Select Skills"),
+        gr.CheckboxGroup(ALL_INTERESTS, label="Select Interests"),
+        gr.Dropdown(
+            ["Any"] + ALL_DIFFICULTIES,
+            value="Any",
+            label="Difficulty Level"
+        ),
         gr.Slider(1, 10, value=5, step=1, label="Top N Projects")
     ],
     outputs=gr.Dataframe(
         headers=["Title", "Difficulty", "Tags", "Score"]
     ),
     title="AI Project Recommendation System",
-    description="Get personalized project recommendations based on skills and interests"
+    description="Select your skills, interests, and difficulty to get personalized project recommendations."
 )
 
 if __name__ == "__main__":
